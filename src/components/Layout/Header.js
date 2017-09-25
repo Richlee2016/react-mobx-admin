@@ -5,18 +5,18 @@ import "./layout.less"
 
 const SubMenu = Menu.SubMenu;
 
-const Header = ({logout}) => {
+const Header = ({handleFold}) => {
 
     const handleClickMenu = (e) => {
         // if(e.key === 'logout'){
         //     logout();
         // };
-        console.log(0);
+        console.log(e);
     }
 
     return (
             <div className="header">
-                <span className="fold"><Icon type="menu-fold" /></span>
+                <span className="fold" onClick={handleFold}><Icon type="menu-fold" /></span>
                 <div className="headerMenu">
                     <Menu
                     mode="horizontal"
