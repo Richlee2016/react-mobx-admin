@@ -18,14 +18,14 @@ const Menus = ({ collapsed }) => {
     return menus.map(o => <Menu.Item key={o.href}><Link to={o.href} />{o.title}</Menu.Item>);
   };
 
+  // <div className="profil">
+  //   <div>
+  //     <img src={profil} />
+  //   </div>
+  //   {!collapsed ? <span>来啦！厉害了唷！</span> : null}
+  // </div>
   return (
     <div className="menu">
-      <div className="profil">
-        <div>
-          <img src={profil} />
-        </div>
-        {!collapsed ? <span>来啦！厉害了唷！</span> : null}
-      </div>
       <Menu
         style={{ border: "none" }}
         mode="inline"

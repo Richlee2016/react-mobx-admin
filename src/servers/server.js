@@ -1,7 +1,7 @@
 import rxios from './rxios'
 
-const home = () => rxios('GET', '/api/v0/movies/home');
+const get_movie_list = (qs) => rxios('GET', '/movie_api/list',qs);
 
 export {
-    home, // 首页
+    get_movie_list, // 电影列表
 }

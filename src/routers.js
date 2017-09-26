@@ -22,27 +22,10 @@ import LazyRoute from "lazy-route";
 
 export default class Routers extends React.Component {
   render() {
-    return (
-      <div className="router-box">
-        <Route
-          path="/movie_home"
-          render={props => (
-            <LazyRoute {...props} component={import("@/views/Movie/home")} />
-          )}
-        />
-        <Route
-          path="/movie_log"
-          render={props => (
-            <LazyRoute {...props} component={import("@/views/Movie/log")} />
-          )}
-        />
-        <Route
-          path="/movie_crawler"
-          render={props => (
-            <LazyRoute {...props} component={import("@/views/Movie/crawler")} />
-          )}
-        />
-      </div>
-    );
+    return <div className="router-box">
+        <Route path="/movie_home" render={props => <LazyRoute {...props} component={import("@/views/Movie/home")} />} />
+        <Route path="/movie_log" render={props => <LazyRoute {...props} component={import("@/views/Movie/log")} />} />
+        <Route path="/movie_crawler" render={props => <LazyRoute {...props} component={import("@/views/Movie/crawler")} />} />
+      </div>;
   }
 }

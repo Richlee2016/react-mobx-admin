@@ -2,10 +2,10 @@
 
 module.exports = {
     context: [
-        // '/api/v0/movies/home'
+        '/movie_api/list'
     ],
     options: {
-        // target: "http://192.168.2.116:3006/",
-        // changeOrigin: true,
+        target: "http://localhost:3000/",
+        changeOrigin: true,
     }
 };
