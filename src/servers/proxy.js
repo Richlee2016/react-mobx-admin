@@ -5,7 +5,7 @@ module.exports = {
         '/movie_api/list'
     ],
     options: {
-        target: "http://localhost:3000/",
+        target: "http://localhost:3006/",
         changeOrigin: true,
     }
 };

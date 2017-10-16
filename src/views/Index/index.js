@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import RouterBox from "@/routers";
 import { Header, Menus } from "@/components/Layout";
 import { inject, observer } from "mobx-react";
+import config from '@/config'
 import "./Index.less";
 
 @inject("app")
@@ -50,7 +51,7 @@ export default class Index extends React.Component {
         <div
           className={`menu-box ${menuCollapsed ? "menu-small" : "menu-big"}`}
         >
-          <Menus collapsed={menuCollapsed} />
+          <Menus collapsed={menuCollapsed} menus={config.menus} />
         </div>
         <div className="main-box">
           <div className="header-box">

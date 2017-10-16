@@ -4,48 +4,43 @@ import profil from "@/assets/images/logo.png";
 import { Link } from "react-router-dom";
 const SubMenu = Menu.SubMenu;
 
-const Menus = ({ collapsed }) => {
+const Menus = ({ collapsed, menus }) => {
   const handleSelect = e => {
     console.log(0);
   };
-
-  const menuData = [
-    { title: "影片", href: "/movie_home" },
-    { title: "日志", href: "/movie_log" },
-    { title: "爬虫", href: "/movie_crawler" }
-  ];
-  const menuLink = menus => {
-    return menus.map(o => <Menu.Item key={o.href}><Link to={o.href} />{o.title}</Menu.Item>);
-  };
-
-  // <div className="profil">
-  //   <div>
-  //     <img src={profil} />
-  //   </div>
-  //   {!collapsed ? <span>来啦！厉害了唷！</span> : null}
-  // </div>
-  return (
-    <div className="menu">
-      <Menu
-        style={{ border: "none" }}
-        mode="inline"
-        inlineCollapsed={collapsed}
-        onSelect={handleSelect}
+  const MenuJsx = menus =>
+    menus.map(m => (
+      <SubMenu
+        key={m.name}
+        title={
+          <span>
+            <Icon type={m.icon} />
+            <span>{m.title}</span>
+          </span>
+        }
       >
-        <SubMenu
-          key="movie"
-          title={
-            <span>
-              <Icon type="desktop" />
-              <span>电影</span>
-            </span>
-          }
-        >
-          {menuLink(menuData)}
-        </SubMenu>
+        {m.navs.map(n => (
+          <Menu.Item key={n.href}>
+            <Link to={n.href}>
+              <Icon type={n.icon} />
+              {n.title}
+            </Link>
+          </Menu.Item>
+        ))}
+      </SubMenu>
+    ));
+
+  return <div className="menu">
+      <div className="profil">
+        <div>
+          <img src={profil} />
+        </div>
+        {!collapsed ? <span>来啦！厉害了唷！</span> : null}
+      </div>
+      <Menu style={{ border: "none" }} mode="inline" inlineCollapsed={collapsed} onSelect={handleSelect}>
+        {MenuJsx(menus)}
       </Menu>
-    </div>
-  );
+    </div>;
 };
 
 export default Menus;
