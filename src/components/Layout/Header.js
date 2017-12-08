@@ -4,7 +4,6 @@ import { Icon, Menu}  from 'antd'
 import "./layout.less"
 
 const SubMenu = Menu.SubMenu;
-
 const Header = ({handleFold,logout,collapsed}) => {
 
     const handleClickMenu = (e) => {

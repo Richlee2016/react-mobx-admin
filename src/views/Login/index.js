@@ -1,33 +1,36 @@
-import React,{Components} from 'react'
+import React, { Components } from "react";
 import { inject, observer } from "mobx-react";
-import {withRouter} from "react-router-dom"
-import './login.less'
-
-
+import {Button} from 'antd'
+import qs from 'querystring'
+import "./login.less";
 
 @inject("app")
 @observer
 export default class Login extends React.Component {
+  constructor(props) {
+    super(props);
+    this.store = this.props.app;
+  }
 
-    constructor(props){
-        super(props)
-        this.store = this.props.app;
-    }
+  getInfo() {
+    const sendData = {
+      response_type: "code",
+      client_id: 101435375,
+      redirect_uri: encodeURI("http://173gg43187.iok.la/oauth/qq"),
+      state: 'http://localhost:8083/'
+    };
+    const href = `https://graph.qq.com/oauth2.0/authorize?${qs.stringify(
+      sendData
+    )}`;
+    location.href = href;
+  }
 
-    loginBtn(login){
-        return withRouter(({history}) => (
-            <button onClick={() => {login(() => {history.push('/movie_home')})}}>login</button>
-        ))
-    }
-
-    render(){
-        const {login} = this.store;
-        const LoginBtn = this.loginBtn(login);
-        return (
-            <div className="login">
-                this is login
-                <LoginBtn />
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div className="login">
+        this is login
+        <Button type="primary" onClick={this.getInfo}>login</Button>
+      </div>
+    );
+  }
 }

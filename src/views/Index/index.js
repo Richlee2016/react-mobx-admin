@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import RouterBox from "@/routers";
 import { Header, Menus } from "@/components/Layout";
 import { inject, observer } from "mobx-react";
-import config from '@/config'
+import config from "@/config";
+import RouterCom from "@/router"
 import "./Index.less";
+import { Switch } from "react-router-dom";
 
 @inject("app")
 @observer
@@ -28,7 +29,7 @@ export default class Index extends React.Component {
     );
   }
   // 计算窗口
-  winHandle(w){
+  winHandle(w) {
     const bodyWidth = document.documentElement.clientWidth;
     if (bodyWidth < w) {
       this.setState({
@@ -45,19 +46,23 @@ export default class Index extends React.Component {
   //视图
   render() {
     const { menuCollapsed } = this.state;
-    const { logout } = this.store;
+    const { LogOut,user} = this.store;
     return (
       <div className="page-box">
         <div
           className={`menu-box ${menuCollapsed ? "menu-small" : "menu-big"}`}
         >
-          <Menus collapsed={menuCollapsed} menus={config.menus} />
+          {user?<Menus collapsed={menuCollapsed} menus={config.menus} user={user} />:null}
         </div>
         <div className="main-box">
           <div className="header-box">
-            <Header handleFold={this.toggleCollapsed} logout={logout} collapsed={menuCollapsed} />
+            {user?<Header
+              handleFold={this.toggleCollapsed}
+              logout={LogOut}
+              collapsed={menuCollapsed}
+            />:null}
           </div>
-          <RouterBox />
+          <RouterCom />
         </div>
       </div>
     );

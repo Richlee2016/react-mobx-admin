@@ -5,11 +5,12 @@ export default {
       title:"电影",
       icon: "desktop",
       navs: [
-        { title: "影片", href: "/movie_home", icon: "link" },
-        { title: "用户", href: "/movie_user", icon: "heart-o" },
-        { title: "日志", href: "/movie_log", icon: "eye-o" },
-        { title: "爬虫", href: "/movie_crawler", icon: "man" },
-        { title: "API", href: "/movie_api", icon: "api" }
+        { title: "影片", href: "/movie/home", icon: "link" },
+        { title: "在线", href: "/movie/online", icon: "heart-o" },
+        { title: "用户", href: "/movie/user", icon: "heart-o" },
+        { title: "日志", href: "/movie/log", icon: "eye-o" },
+        { title: "爬虫", href: "/movie/crawler", icon: "man" },
+        { title: "API", href: "/movie/api", icon: "api" }
       ]
     },
     {
@@ -17,12 +18,18 @@ export default {
       title:"书城",
       icon: "hdd",
       navs: [
-        { title: "书籍", href: "/book_home", icon: "edit" },
-        { title: "用户", href: "/book_user", icon: "user" },
-        { title: "日志", href: "/book_log", icon: "line-chart" },
-        { title: "爬虫", href: "/book_crawler", icon: "man" },
-        { title: "API", href: "/book_api", icon: "api" }
+        { title: "书籍", href: "/book/home", icon: "edit" },
+        { title: "用户", href: "/book/user", icon: "user" },
+        { title: "日志", href: "/book/log", icon: "line-chart" },
+        { title: "爬虫", href: "/book/crawler", icon: "man" },
+        { title: "API", href: "/book/api", icon: "api" }
       ]
+    },
+    {
+      name: "user",
+      title:"用户",
+      icon: "hdd",
+      href: "/user"
     }
   ]
 };
