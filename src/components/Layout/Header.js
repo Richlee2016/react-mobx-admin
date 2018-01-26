@@ -1,5 +1,4 @@
 import React,{ Component } from 'react'
-import PropTypes from 'prop-types'
 import { Icon, Menu}  from 'antd'
 import "./layout.less"
 
@@ -29,8 +28,5 @@ const Header = ({handleFold,logout,collapsed}) => {
         )
 }
 
-Header.PropTypes = {
-    // logout:PropTypes.func
-}
 
 export default Header

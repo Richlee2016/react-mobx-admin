@@ -1,10 +1,10 @@
 import { observable, action, computed, runInAction } from "mobx";
 import {
-  get_movie_list,
+  Get_Moives,
   get_crawler_page,
   get_crawler_home,
   get_online_list,
-  get_users
+  Get_Users
 } from "@/servers/server";
 import { detection } from "@/utils";
 class Movie {
@@ -25,12 +25,10 @@ class Movie {
   // 获取电影列表
   getList = async qs => {
     this.loading = true;
-    const res = await get_movie_list(qs);
+    const {data} = await Get_Moives(qs);
     runInAction(() => {
-      detection(res, () => {
-        this.list = res.data.data;
+        this.list = data.movies;
         this.loading = false;
-      });
     });
   };
 
@@ -65,13 +63,11 @@ class Movie {
   // 获取用户信息
   fetchUsers = async () => {
     this.loading = true;
-    const res = await get_users();
-    const {data:{code,data}} = res;
+    const res = await Get_Users();
+    console.log(res);
     runInAction(() => {
-      if(code === 1){
          this.users = data;   
          this.loading = false; 
-      };
     });
   };
 }

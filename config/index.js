@@ -11,7 +11,19 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      "**": "http://127.0.0.1:7001"
+      // "**": "http://127.0.0.1:7001"
+      '/api': {
+        target: 'http://127.0.0.1:7001',
+        pathRewrite: {'^/api' : '/api'},
+        changeOrigin: true,
+        secure: false,
+        bypass: function(req, res, proxyOptions) {
+          if (req.headers.accept.indexOf('html') !== -1) {
+            console.log('Skipping proxy for browser request.');
+            return '/index.html';
+          }
+        }
+      }
     },
 
     // Various Dev Server settings

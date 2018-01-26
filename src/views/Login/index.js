@@ -17,7 +17,7 @@ export default class Login extends React.Component {
       response_type: "code",
       client_id: 101435375,
       redirect_uri: encodeURI("http://173gg43187.iok.la/oauth/qq"),
-      state: 'http://localhost:8083/'
+      state: 'http://localhost:8080/'
     };
     const href = `https://graph.qq.com/oauth2.0/authorize?${qs.stringify(
       sendData

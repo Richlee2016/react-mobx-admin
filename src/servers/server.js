@@ -1,26 +1,20 @@
 import rxios from "./rxios";
 
 // 电影
-const get_movie_list = qs => rxios("GET", "/movie_api/list", qs);
+export const get_movie_list = qs => rxios("GET", "/movie_api/list", qs);
 // 在线电影
-const get_online_list = qs => rxios("GET", "/online_api/list", qs);
+export const get_online_list = qs => rxios("GET", "/online_api/list", qs);
 //爬虫
-const get_crawler_home = () => rxios("GET", "/crawler/movie_home");
-const get_crawler_page = () => rxios("GET", "/crawler/movie_page");
+export const get_crawler_home = () => rxios("GET", "/crawler/movie_home");
+export const get_crawler_page = () => rxios("GET", "/crawler/movie_page");
 // 用户
-const log_in = qs => rxios("GET",`/oauth/users/${qs}`);
-const log_out = () => rxios("DEL", "/oauth/users");
-const get_users = () => rxios("GET", "/oauth/users");
-
-// 电影列表
-//登录
-//登出
-export {
-  get_movie_list,
-  get_online_list,
-  get_crawler_home,
-  get_crawler_page,
-  log_in,
-  log_out,
-  get_users
-};
+// export const log_in = qs => rxios("GET",`/oauth/users/${qs}`);
+// export const log_out = () => rxios("DEL", "/oauth/users");
+export const get_users = () => rxios("GET", "/oauth/users");
+// 会话
+export const Session_Login = qs => rxios("GET","/api/session",qs);
+export const Session_Logout = () => rxios("DEL","/api/session");
+// 用户
+export const Get_Users = () => rxios("GET","/api/users");
+// 电影
+export const Get_Moives = qs => rxios("GET","/api/movies",qs);
